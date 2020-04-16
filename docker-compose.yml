@@ -16,8 +16,6 @@ services:
       retries: 24
 
   petclinic:
-     depends_on:
-       - mysql-petclinic
      image: arey/springboot-petclinic
      depends_on:
        mysql-petclinic:
