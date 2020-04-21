@@ -1,8 +1,9 @@
 version: '2.1'
 services:
 
-  mysql-petclinic:
+  mysql:
     image: mysql:5.7
+    container_name: mysql
     ports:
       - "3306:3306"
     environment:
@@ -14,13 +15,35 @@ services:
       test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
       timeout: 5s
       retries: 24
+    networks:
+      consul_app-network:
+        ipv4_address: 10.20.0.5
 
   petclinic:
-     image: arey/springboot-petclinic
-     depends_on:
-       mysql-petclinic:
-         condition: service_healthy
-     ports:
-       - "8080:8080"
-     environment:
-       - SPRING_PROFILES_ACTIVE=mysql,prod
+    image: arey/springboot-petclinic
+    container_name: petclinic
+    depends_on:
+      mysql:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_PROFILES_ACTIVE=mysql,prod
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/petclinic?useUnicode=true
+    networks:
+      consul_app-network:
+        ipv4_address: 10.20.0.10
+
+  consul-client:
+    image: consul:latest
+    container_name: consul-client
+    volumes:
+      - ./consul/config:/consul/config
+    command: agent -node=consul-agent  -join=10.20.0.250
+    networks:
+      consul_app-network:
+        ipv4_address: 10.20.0.100
+
+networks:
+  consul_app-network:
+    external: true
