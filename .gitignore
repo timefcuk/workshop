@@ -1,0 +1,10 @@
+# Tools
+.vagrant
+.idea
+*.sh
+
+# Petclinic
+spring-petclinic-angularjs
+
+#Consul
+consul/data

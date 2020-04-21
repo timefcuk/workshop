@@ -1,0 +1,7 @@
+{
+  "Service": {
+    "Name": "mysql",
+    "Address" : "10.20.0.5",
+    "Port": 3306
+  }
+}

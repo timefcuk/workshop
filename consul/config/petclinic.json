@@ -1,0 +1,7 @@
+{
+  "Service": {
+    "Name": "petclinic",
+    "Address" : "10.20.0.10",
+    "Port": 8080
+  }
+}
