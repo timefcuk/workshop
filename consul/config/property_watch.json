@@ -1,0 +1,10 @@
+{
+  "Watches":[
+    {
+      "type": "key",
+      "key": "test/property1",
+      "handler_type": "script",
+      "args": ["/consul/config/handlers/handler"]
+    }
+  ]
+}

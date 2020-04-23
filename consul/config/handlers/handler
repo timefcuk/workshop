@@ -1,0 +1,3 @@
+#!/bin/sh
+mkdir -p /consul/logs/handlers
+echo "[ $(date) ] Handler: changes were made" >> /consul/logs/handlers/handler.log
