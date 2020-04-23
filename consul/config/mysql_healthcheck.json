@@ -1,0 +1,22 @@
+{
+  "Node": "consul-agent",
+  "Address": "10.20.0.100",
+  "Service": {
+    "ID": "mysql",
+    "Service": "MySQL",
+    "Address": "10.20.0.5",
+    "Port": 3306
+  },
+  "Check": {
+    "Node": "consul-agent",
+    "CheckID": "service:mysql",
+    "Name": "MySQL health check",
+    "Notes": "MySQL TCP health check",
+    "ServiceID": "mysql",
+    "Definition": {
+      "TCP": "10.20.0.5:3306",
+      "Interval": "10s",
+      "Timeout": "1s"
+    }
+}
+}
