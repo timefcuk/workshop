@@ -3,5 +3,13 @@
     "Name": "mysql",
     "Address" : "10.20.0.5",
     "Port": 3306
+  },
+  "check": {
+    "id": "mysql_port",
+    "service_id": "mysql",
+    "name": "MySQL TCP on port 3306",
+    "tcp": "10.20.0.5:3306",
+    "interval": "10s",
+    "timeout": "1s"
   }
 }
